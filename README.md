@@ -38,9 +38,10 @@ També ho podriem fer de la següent manera:
 ''' git switch -c FeatureB ''' (en el cas de que no existeixi originalment)
 
 * **Introduce in order the commands to change initial status and obtain the final status:**
-1: '''git add *''' (per afegir tots els arxius del directori actual)
-2: '''git commit -m''' "arxius .py pujats"
-3: '''git push -u origin master'''
+
+ * '''git add *''' (per afegir tots els arxius del directori actual)
+ * '''git commit -m''' "arxius .py pujats"
+ * '''git push -u origin master'''
 
 **How many levels did you pass in the game? Which ones?**
 
