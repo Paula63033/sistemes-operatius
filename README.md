@@ -35,7 +35,7 @@ Seguidament, executem la comanda:
 
 També ho podriem fer de la següent manera:
  
-``` git switch FeatureB>  ```
+``` git switch FeatureB  ```
 
 ``` git switch -c FeatureB ``` (en el cas de que no existeixi originalment)
 
