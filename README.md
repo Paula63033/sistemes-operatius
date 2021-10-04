@@ -47,4 +47,17 @@ També ho podriem fer de la següent manera:
 
 **How many levels did you pass in the game? Which ones?**
 
-texto
+Hem trobat interessant tenir en compte tota aquesta serie de comandes que ens presenten només inicar el joc:
+
+![image](https://user-images.githubusercontent.com/38278207/135923895-f743dbbb-bb15-46a7-b255-62523ea1c1c8.png)
+
+Hem assolit els següents nivells:
+
+1. Secuencia introductoria
+2. Acelerando
+
+La resta els estem continuant treballant, tot i que de primeres no ens han sortit
+
+
+
+
