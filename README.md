@@ -62,7 +62,7 @@ La resta els estem continuant treballant, tot i que de primeres no ens han sorti
 
 **ACT1**
 
-* **Quantes crides a sistema es fan de cada tipus? 
+* **Quantes crides a sistema es fan de cada tipus? **
 
  close(): 6
 
