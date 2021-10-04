@@ -28,20 +28,22 @@ Amb permisos de super-usuari, fem apt install git
 * **What command should I do now if I want to change HEAD to master branch?**
 
 Primer ens assegurem de que existeix la branca en questió amb la comanda per llistar:
-''' git branch '''
+``` git branch ```
 
 Seguidament, executem la comanda:
-'''git checkout FeatureB'''
+``` git checkout FeatureB ```
 
 També ho podriem fer de la següent manera:
-''' git switch FeatureB> '''
-''' git switch -c FeatureB ''' (en el cas de que no existeixi originalment)
+ 
+``` git switch FeatureB>  ```
+
+``` git switch -c FeatureB ``` (en el cas de que no existeixi originalment)
 
 * **Introduce in order the commands to change initial status and obtain the final status:**
 
- * '''git add *''' (per afegir tots els arxius del directori actual)
- * '''git commit -m''' "arxius .py pujats"
- * '''git push -u origin master'''
+ * ``` git add * ``` (per afegir tots els arxius del directori actual)
+ * ``` git commit -m ``` "arxius .py pujats"
+ * ``` git push -u origin master ```
 
 **How many levels did you pass in the game? Which ones?**
 
