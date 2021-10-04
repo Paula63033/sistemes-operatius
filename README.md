@@ -74,13 +74,10 @@ La resta els estem continuant treballant, tot i que de primeres no ens han sorti
 
  %desc: Crides a sistema relacionades amb descriptors de fitxers. read(), write(), open(), close(),…
 
-<<<<<<< HEAD
-
 * Quines accions es produeixen després d’executar aquesta comanda? 
 
 Primerament, per fer un cat, necessitarem crear el fitxer test i posar-hi contingut. Si escrivim cat ``test > test.out``, crearà el fitxer test.out, fent que al contingut d’aquest hi aparegui el contingut de text (és a dir, a copiat a test.out el contingut de test). Per tant, genera un fork.
-=======
->>>>>>> ebb5aaf99234443007322abe7048380b3e4e708e
+
 
 * **Quines accions es produeixen després d’executar aquesta comanda?**
 
