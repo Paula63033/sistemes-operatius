@@ -23,7 +23,7 @@ El problema esta en q el nostre usuari no te permisos de superusuari, no esta al
 Amb permisos de super-usuari, fem apt install git
 
 
-## HandsOn1 - Correcció
+## HandsOn1
 
 * **What command should I do now if I want to change HEAD to master branch?**
 
