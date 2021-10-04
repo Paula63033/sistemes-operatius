@@ -45,7 +45,7 @@ També ho podriem fer de la següent manera:
 2. ``` git commit -m "arxius .py pujats" ```
 3. ``` git push -u origin master ```
 
-**How many levels did you pass in the game? Which ones?**
+* **How many levels did you pass in the game? Which ones?**
 
 Hem trobat interessant tenir en compte tota aquesta serie de comandes que ens presenten només inicar el joc:
 
@@ -57,6 +57,17 @@ Hem assolit els següents nivells:
 2. Acelerando
 
 La resta els estem continuant treballant, tot i que de primeres no ens han sortit
+
+# Activitats Avaluables Week 1 - Correcció
+
+*  Quantes crides a sistema es fan de cada tipus? 
+- close(): 6
+- read(): 3
+- open(): 4
+- write(): 1
+- %desc: Crides a sistema relacionades amb descriptors de fitxers. read(), write(), open(), close(),…
+
+* Quines accions es produeixen després d’executar aquesta comanda? Primerament, per fer un cat, necessitarem crear el fitxer test i posar-hi contingut. Si escrivim cat test > test.out, crearà el fitxer test.out, fent que al contingut d’aquest hi aparegui el contingut de text (és a dir, a copiat a test.out el contingut de test). Per tant, genera un fork.
 
 
 
