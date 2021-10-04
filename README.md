@@ -23,3 +23,16 @@ El problema esta en q el nostre usuari no te permisos de superusuari, no esta al
 Amb permisos de super-usuari, fem apt install git
 
 
+## HandsOn1 - Correcció
+
+* **What command should I do now if I want to change HEAD to master branch?**
+
+texto
+
+* **Introduce in order the commands to change initial status and obtain the final status:**
+
+texto
+
+**How many levels did you pass in the game? Which ones?**
+
+texto
