@@ -60,6 +60,8 @@ La resta els estem continuant treballant, tot i que de primeres no ens han sorti
 
 # Activitats Avaluables Week 1 - Correcció
 
+**ACT1**
+
 *  Quantes crides a sistema es fan de cada tipus? 
 
  close(): 6
@@ -75,8 +77,50 @@ La resta els estem continuant treballant, tot i que de primeres no ens han sorti
 
 * Quines accions es produeixen després d’executar aquesta comanda? 
 
-Primerament, per fer un cat, necessitarem crear el fitxer test i posar-hi contingut. Si escrivim cat ``test > test.out``, crearà el fitxer test.out, fent que al contingut d’aquest hi aparegui el contingut de text (és a dir, a copiat a test.out el contingut de test). Per tant, genera un fork.
+Primerament, per fer un cat, necessitarem crear el fitxer test i posar-hi contingut. Si escrivim ``cat test > test.out``, crearà el fitxer test.out, fent que al contingut d’aquest hi aparegui el contingut de text (és a dir, a copiat a test.out el contingut de test). Per tant, genera un fork.
+
+**ACT2**
+
+Fitxers adjunts de la activitat:
+
+experiment.c
+
+act_av02_os.c
+
+* Analitzar el següent codi: src/vl01/activitiesact_av02_os.c 
+* Corregir els warnings generats en la compilació 
+
+Hem tingut problemes per executar el codi degut als include, però era pel SO en el qual l’estavem executant, que era windows. Es podria arribar a executar el codi en un entorn Windows, pero caldria importar/afegir les llibreries requerides al IDE que estiguessim fent servir. Per sol·lucionar això, hem treballat el codi en l’entorn Debian (per passar els fitxers de la maquina real a la virtual, ho fem mitjançant comandes emprant el servei SFTP).
+Un cop arreglat això i provant el codi en entorn Linux, ens salta el següent error quan intentem compilar:
+
+simplement calia afegir el import de <stdio.h>
+
+* Explicar que fa aquest codi?
+* 
+Un com executem el codi, veiem que ens dona la següent sortida:
+
+Veiem que ens mostra dos temps, els quals son els mateixos nombres pero, el 2n, partint el nombre per les “unitats”, és a dir, ens dona el temps en segons.
+El que estem comparant es la funcio del sistema getPid() amb la funció pow() i la volta al bucle es 100.000 per poder obtenir una mitjana del temps 
+
+Pensem que el codi està fet per comprovar la eficiencia de la funció getTime, comprobar quan temps tarda a executar-se i investigar el seu cost
+
+* Explicar les diferències entre una crida a sistema i una crida a procediment? Quina és més costosa i Per què? 
 
 
+Una crida al sistema es un mètode utilitzat pels programes d’aplicació (un arxiu C per exemple) per comunicar-se amb el mètode del sistema, les crides al sistema permeten utilitzar rutines de codi, instruccions privilegiades. Linux ens dona aprox 300 crides al sistema. Això ens pot ser de gran utilitat ja que tenim una gran varietat de mètodes que treballen així, per exemple: 
 
+Un procediment l’entenem com un segui de codi que ens permet fer el tractament d’alguna cosa, un mètode normal i corrent. Alguns exemples en son el tractament d’interrupcions, excepcions, traps per, posteriorment, fer que no es “trenqui” el programa, o simplement una funció de tipus int que ens torni el quadrat d’un nombre.
+Entenem que una crida al sistema sempre (o, com a mínim,  la majoria de cops) serà més costosa que una crida a un mètode, pel fet de que una crida al sistema ha d’adrentrar-se a la informació interna del sistema per tractar o agafar les dades que calgui.
 
+* Generar un experiment.c per demostrar-ho.
+*
+El que hem fet en aquesta activitat es modificar l’arxiu anterior aprofitant funcions i codi que ens interessa, hem optat per estudiar les següents funcions:
+getTimeofDay: crida al sistema, ja la teniem anteriorment
+
+Math.pow: ens dona el quadrat d’un nombre
+
+tot això aprofitant el càlcul de AvgT1 i AvgT2 per comprovar quina de les 2 funcions és més costosa. 
+
+El resultat es el següent:
+
+On podem verificar com, efectivament, una crida al sistema es més costosa que un procediment o funció normal:
