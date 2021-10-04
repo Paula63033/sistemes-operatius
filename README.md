@@ -1,7 +1,7 @@
 # sistemes-operatius
-Aquest es el repositori de la Paula i Alex. 
+## Alex i Paula - 2n GTIDIC
 
-# P1
+# HandsOn0 - Correcció
 
 ```c
 int a = b + c;
