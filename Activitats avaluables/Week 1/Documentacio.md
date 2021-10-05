@@ -22,10 +22,10 @@ Primerament, per fer un cat, necessitarem crear el fitxer test i posar-hi contin
 
 Fitxers adjunts de la activitat:
 
-1. experiment.c
-2. act_av02_os.c
+1. **experiment.c**
+2. **act_av02_os.c**
 
-* **Analitzar el següent codi: src/vl01/activitiesact_av02_os.c**
+* **Analitzar el següent codi: src/vl01/activities/act_av02_os.c**
 * **Corregir els warnings generats en la compilació**
 
 Hem tingut problemes per executar el codi degut als include, però era pel SO en el qual l’estavem executant, que era windows. Es podria arribar a executar el codi en un entorn Windows, pero caldria importar/afegir les llibreries requerides al IDE que estiguessim fent servir. Per sol·lucionar això, hem treballat el codi en l’entorn Debian (per passar els fitxers de la maquina real a la virtual, ho fem mitjançant comandes emprant el servei SFTP).
@@ -35,7 +35,7 @@ simplement calia afegir el import de ``<stdio.h>``
 
 * **Explicar que fa aquest codi**
 
-En aquest codi podem veure el cost d'us dels mètodes getPid() i foo(), la seva eficiencia. Destaquem que foo() es una funció bàsica, unicament ens retorna un int 10. getPid() es una comanda bàsica del sistema que ens dona el ID del procés actual. 
+En aquest codi podem veure el cost d'us dels mètodes ``getPid()`` i ``foo()``, la seva eficiencia. Destaquem que ``foo()`` es una funció bàsica, unicament ens retorna un int 10. ``getPid()`` es una comanda del sistema que ens dona el ID del procés actual. Executem les comandes un total de N_iterations (1000000) per obtenir un valor més acurat del seu cost. Entenem que el cost de les comandes que ataquen al sistema es altament probable que sigui una mica diferent cada cop que l'executem, degut a l'estat actual del sistema (procesos, serveis...). 
 
 * **Explicar les diferències entre una crida a sistema i una crida a procediment? Quina és més costosa i Per què?**
 
