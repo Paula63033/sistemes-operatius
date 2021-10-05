@@ -7,7 +7,7 @@
 #include <string.h>
 #include <getopt.h>
 #include <sys/types.h>
-#include "pokedex.h"
+#include "pokedex.h" //canvi fet aqui
  
 #define OPTSTR "a:s:r:h"
 #define WELCOME_MSG (printf("===[ Pokemon Management Service ]===\n\
