@@ -1,7 +1,8 @@
 #include <sys/time.h>
-#include <stdio.h>
 #include <unistd.h>
+#include <stdio.h>
 #include <assert.h>
+#include <math.h>
 
 int foo(){
   return(10);
@@ -19,7 +20,7 @@ int main(){
 
   res=gettimeofday(&t1,NULL); assert(res==0);
   for (i=0;i<N_iterations; i++){
-    j=getpid();
+    j=getppid();
   }
   res=gettimeofday(&t2,NULL);   assert(res==0);
 
@@ -28,7 +29,7 @@ int main(){
   /* Find average time for Function call */
   res=gettimeofday(&t1,NULL);  assert(res==0);
   for (i=0;i<N_iterations; i++){
-    j=foo();
+    j=pow(2,3);
   }
   res=gettimeofday(&t2,NULL);   assert(res==0);
 

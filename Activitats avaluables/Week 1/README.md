@@ -35,21 +35,27 @@ simplement calia afegir el import de ``<stdio.h>``
 
 * **Explicar que fa aquest codi**
 
-En aquest codi podem veure el cost d'us dels mètodes ``getPid()`` i ``foo()``, la seva eficiencia. Destaquem que ``foo()`` es una funció bàsica, unicament ens retorna un int 10. ``getPid()`` es una comanda del sistema que ens dona el ID del procés actual. Executem les comandes un total de N_iterations (1000000) per obtenir un valor més acurat del seu cost. Entenem que el cost de les comandes que ataquen al sistema es altament probable que sigui una mica diferent cada cop que l'executem, degut a l'estat actual del sistema (procesos, serveis...). 
+En aquest codi podem veure el cost d'us dels mètodes ``getPid()`` i ``foo()``, la seva eficiencia. Destaquem que ``foo()`` es una funció bàsica, unicament ens retorna un int 10. ``getPid()`` es una comanda del sistema que ens dona el ID del procés actual. Executem les comandes un total de N_iterations (1000000) per obtenir un valor més acurat del seu cost, una mitjana del temps. Entenem que el cost de les comandes que ataquen al sistema es altament probable que el seu cost sigui una mica diferent cada cop que l'executem, degut a l'estat actual del sistema (procesos, serveis...). 
 
 * **Explicar les diferències entre una crida a sistema i una crida a procediment? Quina és més costosa i Per què?**
 
 
 Una crida al sistema es un mètode utilitzat pels programes d’aplicació (un arxiu C per exemple) per comunicar-se amb el mètode del sistema, les crides al sistema permeten utilitzar rutines de codi, instruccions privilegiades. Linux ens dona aprox 300 crides al sistema. Això ens pot ser de gran utilitat ja que tenim una gran varietat de mètodes que treballen així.
 
+Un exemple de crida a sistema bàsica: getpPid();
+
 Un procediment l’entenem com un segui de codi que ens permet fer el tractament d’alguna cosa, un mètode normal i corrent. Alguns exemples en son el tractament d’interrupcions, excepcions, traps per, posteriorment, fer que no es “trenqui” el programa, o simplement una funció de tipus int que ens torni el quadrat d’un nombre.
-Entenem que una crida al sistema sempre (o, com a mínim,  la majoria de cops) serà més costosa que una crida a un mètode, pel fet de que una crida al sistema ha d’adrentrar-se a la informació interna del sistema per tractar o agafar les dades que calgui.
+Entenem que una crida al sistema sempre (o, com a mínim,  la majoria de cops) serà més costosa que una crida a un mètode, pel fet de que una crida al sistema ha d’adrentrar-se a la informació interna del sistema per tractar o agafar les dades que calgui, i sempre tenint en compte que el cost de fer servir aquella crida es diferent degut al estat del sistema en aquell moment d'execució.
 
 * **Generar un experiment.c per demostrar-ho.**
 
 El que hem fet en aquesta activitat es modificar l’arxiu anterior aprofitant funcions i codi que ens interessa, hem optat per estudiar les següents funcions:
 
-1. 
-2. 
+1. ``pow(2,3)`` (mètode de llibreria Math.h, ens dona, en aquest cas, el cub del nombre 2)
+2. ``getppid()`` (crida a sistema. retorna el identificador de procés del pare de l'procés actual)
 
-tot això aprofitant el càlcul de AvgT1 i AvgT2 per comprovar quina de les 2 funcions és més costosa.  normal:
+Cal destacar que per fer ús de la funcio pow, cal importar la llibreria Math.h
+La sortida ha estat la següent:
+
+1. Time for 1: 448.398010
+2. Time for 2: 2.156000
