@@ -30,13 +30,11 @@ scanf("%ld", &m);
  
 long res = add(&n,&m);
  
-sprintf(msg,"El resultat de la suma de n=%ld
-i m=%ld = %ld.\n",n,m,res);
+sprintf(msg,"El resultat de la suma de n=%ld i m=%ld = %ld.\n",n,m,res);
 write(1,msg,strlen(msg));
  
 
-sprintf(msg,"El resultat de la suma d'@ de &n=%p
-i &m=%p = %p.\n",&n,&m, add_addr(&n,&m));
+sprintf(msg,"El resultat de la suma d'@ de &n=%p i &m=%p = %p.\n",&n,&m, add_addr(&n,&m));
 write(1,msg,strlen(msg));
  
 
