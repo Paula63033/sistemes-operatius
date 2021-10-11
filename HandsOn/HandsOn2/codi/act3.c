@@ -21,8 +21,7 @@ int main(int argc, char *argv[]){
 
         for (j = 0; j < n; j++) {
 
-            if (*(a + i) > *(a + j))
-            {
+            if (*(a + i) > *(a + j)) {
                 tmp = *(a + i);
                 *(a + i) = *(a + j);
                 *(a + j) = tmp;
