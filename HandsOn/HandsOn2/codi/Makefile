@@ -1,16 +1,20 @@
-main_v2: main_v2.o pokedex.o pokemon.o
-	gcc main_v2.o pokedex.o pokemon.o -o main_v2 
+CC=gcc
+CFLAGS=-c
+SOURCES=main_v3.c pokedex.c pokemon.c
+OBJECTS=$(SOURCES:.c=.o)
+EXECUTABLE=pokemon_manage_service
 
-main_v2.o: main_v2.c
-	gcc -c main_v2.c
+all: $(SOURCES) $(EXECUTABLE)
+	
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(OBJECTS) -o $@
 
-pokedex.o: pokedex.c pokedex.h
-	gcc -c pokedex.c
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@
 
-pokemon.o: pokemon.c pokemon.h
-	gcc -c pokemon.c
+execute: $(EXECUTABLE)
+	 ./$(EXECUTABLE)
 
-clear:
-	/bin/rm -rf *.o main_v2
-execute:
-	./main_v2
+clean:
+	/bin/rm -rf *.o
+	/bin/rm -rf $(EXECUTABLE)
