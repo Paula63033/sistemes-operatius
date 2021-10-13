@@ -16,17 +16,20 @@ FILE* f = fopen("./pokedex.csv", "r");
 while (fgets(buf, 100, f) != NULL) {
     if ((strlen(buf)>0) && (buf[strlen (buf) - 1] == '\n'))
         buf[strlen (buf) - 1] = '\0';
+
     info = strtok(buf, ",");
     int id = atoi(info);
     printf("%d ", id);
 
-    info = strtok(buf, ",");
+    info = strtok(NULL, ",");
     char *name = info;
+
     printf("%s ", name);
-    info = strtok(buf, ",");
+    info = strtok(NULL, ",");
     double height = atof(info);
     printf("%lf ", height);
-    info = strtok(buf, ",");
+    info = strtok(NULL, ",");
+
     double weight = atof(info);
     printf("%lf \n" ,weight);
     Pokemon p = new_pokemon(id, name, height, weight);
@@ -35,6 +38,7 @@ while (fgets(buf, 100, f) != NULL) {
 
 }
 
+fclose(f);
 
 return EXIT_SUCCESS;
 }

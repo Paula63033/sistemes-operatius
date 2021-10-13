@@ -27,6 +27,8 @@ printf("weight: %lf \n", pokemon_weight(p));
 printf("height: %lf \n", pokemon_height(p));
 */
 
+//falta fer menu, main
+
 init_pokedex();
 show_pokemon(2);
 
