@@ -1,6 +1,6 @@
 # HANDS ON 4
 
-- ** Repetir els passos amb l'ordre yes > /dev/null. Què fa aquesta ordre? Quines diferències trobeu amb l'execució de l'ordre anterior? (0,5 punts) **
+- **Repetir els passos amb l'ordre yes > /dev/null. Què fa aquesta ordre? Quines diferències trobeu amb l'execució de l'ordre anterior? (0,5 punts)**
 
 L'ordre yes envia una serie de 'y' a la sortida estandard, /dev/null es un dispositiu 'forat negre', tot el que es pasi 'desapareixerà', així 'yes>/dev/null' no mostrara res en la sortida estandard ja que tot es va a /dev/null
 
