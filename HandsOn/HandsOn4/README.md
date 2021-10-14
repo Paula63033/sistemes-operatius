@@ -30,6 +30,8 @@ tornem al fill i ens dona la sortida ``Hola soc el fill he rebut SIGCONT... ha t
 
 finalment fa un parell de ``waitpid`` per suspendre la execució del procés. Espera qualsevol cosa del fill, quan acabi i el final.
 
+es llavors quan entra a la part final que ens diu ``Hola soc el pare acabem el programa`` i fa un ``exit(0)`` per tancar el programa
+
 
 - **Programeu un programa pare, fill net que tingui la següent sortida (mantenint l’ordre). A més a més els fills, hauran de generar un enter aleatori entre els valors 0,1 i 2. El 0=apunyalat, 1=decapitat.  (4 punts)**
 
