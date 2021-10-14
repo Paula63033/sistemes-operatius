@@ -24,7 +24,7 @@ int i, j, status;
 
 i = fork();
 
-if (i > 0) {
+if (i == 2) {
 //pare
 printf("Hola sóc Rickard Stark casat amb Lyarra Stark amb pid = %d \n", getpid());
 
@@ -63,7 +63,7 @@ waitpid(-1, 0, WUNTRACED);
 
 waitpid(-1, 0, WUNTRACED);
 
-} else {
+} else if (i == 1) {
 
 //fill
 printf("Hola sóc en Ned fill del matrimoni del Richard i la Lyarra amb pid = %d \n", getpid());
@@ -80,9 +80,12 @@ fflush( stdout );
 
 exit(0);
 
+} else if (i == 0){
+//net
+
 }
 
-printf("Hola soc el pare acabem el programa\n");
+printf("The winter is coming!!!!!\n");
 
 fflush( stdout );
 
