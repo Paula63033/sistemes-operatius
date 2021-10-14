@@ -36,12 +36,13 @@ kill(i, SIGCONT);
 
 
 waitpid(-1, 0, WUNTRACED);
+//espera qualsevol cosa del fill, quan acabi i el final.
 
 //-1: lo que  significa  que  espera  por  cualquier  proceso  hijo;  este  es  el  mismo
-//comportamiento que tiene wait
+//comportamiento que tiene wait. qualsevol dels seus fills
 
 //0:  lo  que  significa  que  espera  por cualquier proceso hijo cuyo ID es igual al del
- //proceso llamante.
+ //proceso llamante. 
 
 //WUNTRACED:permet q els pares es retornin de wait si un fill es aturat en comptes de sortir o morir
 // el pare tr oportunitat d'enviar-li un SIGCONT per continuarlo: matarlo...

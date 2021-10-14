@@ -16,6 +16,19 @@ Hem creat el fitxer ``excev_test.c``
 
 - **Explica el funcionament del programa. Indicant quants senyals s'envien, quin procés envia el senyal, i on l'envia. (2,5 punts)**
 
+Primer comença fent un ``fork()`` per esdevenir procesos pare i fill. Si el fork es mes gran que 0, representa que esta entrant en el proces del pare. Sino, procés del fill.
+
+la comanda ``fflush(stdout)`` ens serveix per assegurar-nos de que ens donara la sortida per consola
+
+Primer entra al pare, i es quan ens dona la surtida de ``Hola soc el pare i el meu pid= XXXX``, i no comença pel fill fins que no li envia la primera señal, que es el fragment de codi ``waitpid(-1, 0, WUNTRACED)``.
+
+Aleshores entra al fill, i dona la sortida de: ``Hola soc el fill i el meu pid= XXXX``, acte seguit realitza la comanda de ``kill`` passant-li per parametre el id de ell mateix amb la instrucció ``getPid()`` i SIGSTOP, que es com un ctrl+z
+
+llavors torna al pare, i es quan dona la sortida de ``Hola soc el pare i he de continuar... però millor que ho faci el meu fill xD\n ...Enviant SIGCONT...``, i torna a fer un kill per enviar señal al proces, passantli el fork i SIGCONT, es a dir estem reanudant el proces anteriorment parat.
+
+tornem al fill i ens dona la sortida ``Hola soc el fill he rebut SIGCONT... ha treballar\n``, i matem el proces fill. es torna al pare per defecte.
+
+finalment fa un parell de ``waitpid`` per suspendre la execució del procés. Espera qualsevol cosa del fill, quan acabi i el final.
 
 
 - **Programeu un programa pare, fill net que tingui la següent sortida (mantenint l’ordre). A més a més els fills, hauran de generar un enter aleatori entre els valors 0,1 i 2. El 0=apunyalat, 1=decapitat.  (4 punts)**
