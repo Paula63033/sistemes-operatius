@@ -8,6 +8,7 @@ yes > /dev/null està en estat R (running), en canvi si fem amb els passos anter
 
 - ** Modificar aquest procés per obtenir una sortida indicant Hola sóc el procés pare i Hola sóc el procés fill. (0,5 punts) **
 
+    Hem creat el fitxer proces_test.c
 
 - **  Modificar aquest exemple fent anar la funció execv(). (0,5 punts) **
 
