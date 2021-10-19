@@ -36,3 +36,7 @@ es llavors quan entra a la part final que ens diu ``Hola soc el pare acabem el p
 - **Programeu un programa pare, fill net que tingui la següent sortida (mantenint l’ordre). A més a més els fills, hauran de generar un enter aleatori entre els valors 0,1 i 2. El 0=apunyalat, 1=decapitat.  (4 punts)**
 
 Programa creat: ``pare_fill_net.c``
+
+- **Per acabar realitzeu el següent test al campus virtual relacionat amb els continguts treballats en aquest HandsOn. El seu valor és de 2 punts.**
+
+Questionari fet amb nota de 1.55. Fet amb el perfil de Alejandro Ramon Martinez.
