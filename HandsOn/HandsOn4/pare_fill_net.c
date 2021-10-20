@@ -21,36 +21,74 @@ int num2 = rand()%2;
 //fem que num1 i num2 no puguin tenir el mateix num...
 while(num1 == num2) num2 = rand()%2;
 
+switch (num1)
+{
+case 1:
+        char estat_net[] = "decapitat";
+    break;
+
+case 0:
+        char estat_net[] = "apunyalat";
+    break;
+}
+
+switch (num2)
+{
+case 1:
+        char estat_fill[] = "decapitat";
+    break;
+
+case 0:
+        char estat_fill[] = "apunyalat";
+    break;
+}
+
+
+
 int pid, pid2;
 
 pid = fork();
 
 if (pid == 0) {
 //fill
-    printf("pid 0  \n");
+    printf("Hola sóc en Ned fill del matrimoni del Richard i la Lyarra amb pid = %d \n", getpid());
     fflush( stdout );
 
     pid2 = fork();
 
     if(pid2 == 0){
         //nET
-        printf("pid2 == 0 SOC EL NET\n");
-        kill(getpid(), SIGSTOP);
+        printf("Hola sóc en Robb Stark amb pid = %d, soc un fill del matrimoni de la Catelyn Stark i Ned Stark.\n", getpid());
+        fflush( stdout );
+
+        printf("Soc en Robb amb pid = %d i he estat %s \n", getpid(), &estat_net);
+        fflush( stdout );
+       
+        exit(0);
 
     } else if (pid2 > 0){
-        //PARE NET / FILL PARE
-        printf("pid2 >0 SOC EL FILL (PARE DEL NET)\n");
-        waitpid(-1, 0, WUNTRACED);
+        //PARE NET / FILL 
+        wait(NULL);
+
+        printf("Soc en Ned amb pid = %d i he estat %s \n", getpid(), &estat_fill);
+        fflush( stdout );
+       
+        //waitpid(-1, 0, WUNTRACED);
+        exit(0);
     }
-    kill(getpid(), SIGSTOP);
-
-} else if (pid > 0) {
-    printf("pid > 0\n");
-    //pare
-
-    waitpid(-1, 0, WUNTRACED);
+    
 }
+    //pare
+    printf("Hola sóc Rickard Stark casat amb Lyarra Stark amb pid = %d \n", getpid());
+    fflush( stdout );
+    
+    wait(NULL);
 
-exit(0);
+    printf("En resum el meu fill Robb ha estat %s, en Ned %s i jo en Rickard amb pid = %d i m’han executat.", &estat_net, &estat_fill ,getpid());
+
+
+    printf("The winter is coming!!!!!\n");
+    fflush( stdout );
+    exit(0);
 
 }
