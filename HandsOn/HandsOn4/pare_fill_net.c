@@ -1,3 +1,7 @@
+//Programeu un programa pare, fill net que tingui la següent sortida (mantenint l’ordre). 
+//A més a més els fills, hauran de generar un enter aleatori entre els valors 0,1 i 2. 
+//El 0=apunyalat, 1=decapitat.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
