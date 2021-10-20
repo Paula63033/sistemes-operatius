@@ -24,74 +24,36 @@ while(num1 == num2) num2 = rand()%2;
 //imprmim els numeros
 printf("NUM1: %d.....NUM2: %d", num1, num2);
 
-int i, j, status;
+int pid, pid2;
 
-i = fork();
+pid = fork();
 
-if (i == 2) {
-//pare
-printf("Hola sóc Rickard Stark casat amb Lyarra Stark amb pid = %d \n", getpid());
+    if (pid == 0) {
 
-fflush( stdout );
+        //fill
+        printf("pid 0");
 
-waitpid(-1, 0, WUNTRACED);
-//    La  función  waitpid  suspende  la  ejecución  del  proceso  en  curso  hasta  que un hijo
-//    especificado por el argumento pid ha terminado, o hasta que  se  produce  una  señal  cuya
-//    acción es finalizar el proceso actual o llamar a la función manejadora de la señal.
-
-//WUNTRACED:permet q els pares es retornin de wait si un fill es aturat en comptes de sortir o morir
-// el pare tr oportunitat d'enviar-li un SIGCONT per continuarlo: matarlo...
-
-printf("Hola soc el pare i he de continuar... però millor que ho faci el meu fill xD\n ...Enviant SIGCONT...\n");
-
-fflush( stdout );;
-
-kill(i, SIGCONT);
-// Per poder enviar senyals als processos disposem de l'ordre kill (l'ordre que vau hackejar amb el vostre rootkit ^^).
-//SIGCONT: reanudar un proces q ha estat parat per SIGSTOP
+    pid2 = fork();
 
 
 
-waitpid(-1, 0, WUNTRACED);
-//espera qualsevol cosa del fill, quan acabi i el final.
+    } else if (pid > 0) {
+            printf("pid > 0");
 
-//-1: lo que  significa  que  espera  por  cualquier  proceso  hijo;  este  es  el  mismo
-//comportamiento que tiene wait. qualsevol dels seus fills
+            pid2 = fork();
+            //pare
 
-//0:  lo  que  significa  que  espera  por cualquier proceso hijo cuyo ID es igual al del
- //proceso llamante. 
+            wait();
 
-//WUNTRACED:permet q els pares es retornin de wait si un fill es aturat en comptes de sortir o morir
-// el pare tr oportunitat d'enviar-li un SIGCONT per continuarlo: matarlo...
+            if(pid2 == 0){
 
-
-waitpid(-1, 0, WUNTRACED);
-
-} else if (i == 1) {
-
-//fill
-printf("Hola sóc en Ned fill del matrimoni del Richard i la Lyarra amb pid = %d \n", getpid());
+            } else if (pid2 > 0){
 
 
-fflush( stdout );
+            }
 
-kill(getpid(), SIGSTOP);
-//SINGSTOP es com el ctrl+z pero no pot ser ignorat
 
-printf("Hola soc el fill he rebut SIGCONT... ha treballar\n");
-
-fflush( stdout );
-
-exit(0);
-
-} else if (i == 0){
-//net
-
-}
-
-printf("The winter is coming!!!!!\n");
-
-fflush( stdout );
+    }
 
 exit(0);
 
