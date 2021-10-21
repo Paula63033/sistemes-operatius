@@ -25,6 +25,7 @@ char * estat_net;
 
 char * estat_fill;
 
+
 switch (num1)
 {
 case 1:
