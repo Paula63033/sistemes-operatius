@@ -21,25 +21,29 @@ int num2 = rand()%2;
 //fem que num1 i num2 no puguin tenir el mateix num...
 while(num1 == num2) num2 = rand()%2;
 
+char * estat_net;
+
+char * estat_fill;
+
 switch (num1)
 {
 case 1:
-        char estat_net[] = "decapitat";
+        estat_net = "decapitat";
     break;
 
 case 0:
-        char estat_net[] = "apunyalat";
+        estat_net = "apunyalat";
     break;
 }
 
 switch (num2)
 {
 case 1:
-        char estat_fill[] = "decapitat";
+        estat_fill = "decapitat";
     break;
 
 case 0:
-        char estat_fill[] = "apunyalat";
+        estat_fill = "apunyalat";
     break;
 }
 
@@ -61,7 +65,7 @@ if (pid == 0) {
         printf("Hola sóc en Robb Stark amb pid = %d, soc un fill del matrimoni de la Catelyn Stark i Ned Stark.\n", getpid());
         fflush( stdout );
 
-        printf("Soc en Robb amb pid = %d i he estat %s \n", getpid(), &estat_net);
+        printf("Soc en Robb amb pid = %d i he estat %s \n", getpid(), &*estat_net);
         fflush( stdout );
        
         exit(0);
@@ -70,7 +74,7 @@ if (pid == 0) {
         //PARE NET / FILL 
         wait(NULL);
 
-        printf("Soc en Ned amb pid = %d i he estat %s \n", getpid(), &estat_fill);
+        printf("Soc en Ned amb pid = %d i he estat %s \n", getpid(), &*estat_fill);
         fflush( stdout );
        
         //waitpid(-1, 0, WUNTRACED);
@@ -84,7 +88,7 @@ if (pid == 0) {
     
     wait(NULL);
 
-    printf("En resum el meu fill Robb ha estat %s, en Ned %s i jo en Rickard amb pid = %d i m’han executat.", &estat_net, &estat_fill ,getpid());
+    printf("En resum el meu fill Robb ha estat %s, en Ned %s i jo en Rickard amb pid = %d i m’han executat.\n", &*estat_net, &*estat_fill ,getpid());
 
 
     printf("The winter is coming!!!!!\n");
