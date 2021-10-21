@@ -16,4 +16,5 @@ El problema que podria tenir es un ``Ctrl + c``. El shell para el procés actual
 
 ``signal(SIGINT, controlador);`` on controlador, sería un metode per prevernir l'entrada i que s'executés una tasca en concret.
 
-Ho podriem solucionar fent un signal (SIGINT, controlador);
+- **Joc POKEMON GO**
+arxius .c adjunts en el mateix directori
