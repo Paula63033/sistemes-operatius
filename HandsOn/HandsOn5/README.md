@@ -12,6 +12,8 @@ Per tant, els esdeveniments que acaben generant senyals es poden generar per com
 
 * **Quin problema podria tenir un procés que executa el codi següent, si rebem un SIGINT. Com podem solucionar-ho?  (2 punts)**
 
-El problema que podria tenir es un Ctrl + c. El shell para el procés actual i torna al bucle ppal, es a dir, hi ha una interrupció del software.
+El problema que podria tenir es un ``Ctrl + c``. El shell para el procés actual, s'esdevé una interrupció de software. Una manera de solucionar aixo o prevenir entrades de l'usuari de ``ctrl+c``, sería posant la següent linea de codi:
+
+``signal(SIGINT, controlador);`` on controlador, sería un metode per prevernir l'entrada i que s'executés una tasca en concret.
 
 Ho podriem solucionar fent un signal (SIGINT, controlador);
