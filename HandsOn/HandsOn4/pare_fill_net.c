@@ -8,6 +8,42 @@
 #include <signal.h>
 #include <sys/wait.h>
 #include <stdlib.h> // rand
+#include <time.h> //funcio time
+
+
+// Funció que retorna la cadena que necessitem
+char * setEstat(int num){
+    char * estat;
+    switch (num)
+    {
+    case 1:
+            estat = "decapitat";
+        break;
+
+    case 0:
+            estat = "apunyalat";
+        break;
+    }
+    return estat;
+}
+
+// Funció que li passem per refència la variable on volem guardar la cadena
+
+void setEstatRef(char** estat, int num){
+    // estat representa l'adreça de l'apuntador
+    switch (num)
+    {
+    case 1:
+            *estat = "decapitat";
+        break;
+
+    case 0:
+            *estat = "apunyalat";
+        break;
+    }
+}
+
+// Les dos funcions setEstat i setEstatRef són equivalents però reviseu i intenteu entendre ja que permeten jugar amb els apuntadors.
 
 int main(){
 printf("\n");
@@ -22,11 +58,12 @@ int num2 = rand()%2;
 while(num1 == num2) num2 = rand()%2;
 
 char * estat_net;
-
+setEstatRef(&estat_net, num1);
 char * estat_fill;
+estat_fill = setEstat(num2);
 
-
-switch (num1)
+/* Evitem el copy and paste si necessiteu més estats en el futur únicament cal modificar la funció set estat ;)
+ switch (num1)
 {
 case 1:
         estat_net = "decapitat";
@@ -47,11 +84,10 @@ case 0:
         estat_fill = "apunyalat";
     break;
 }
-
+*/
 
 
 int pid, pid2;
-
 pid = fork();
 
 if (pid == 0) {
@@ -66,7 +102,7 @@ if (pid == 0) {
         printf("Hola sóc en Robb Stark amb pid = %d, soc un fill del matrimoni de la Catelyn Stark i Ned Stark.\n", getpid());
         fflush( stdout );
 
-        printf("Soc en Robb amb pid = %d i he estat %s \n", getpid(), &*estat_net);
+        printf("Soc en Robb amb pid = %d i he estat %s \n", getpid(), estat_net);
         fflush( stdout );
        
         exit(0);
@@ -75,7 +111,7 @@ if (pid == 0) {
         //PARE NET / FILL 
         wait(NULL);
 
-        printf("Soc en Ned amb pid = %d i he estat %s \n", getpid(), &*estat_fill);
+        printf("Soc en Ned amb pid = %d i he estat %s \n", getpid(), estat_fill);
         fflush( stdout );
        
         //waitpid(-1, 0, WUNTRACED);
@@ -89,7 +125,8 @@ if (pid == 0) {
     
     wait(NULL);
 
-    printf("En resum el meu fill Robb ha estat %s, en Ned %s i jo en Rickard amb pid = %d i m’han executat.\n", &*estat_net, &*estat_fill ,getpid());
+    // printf us demana un char* i els estats ja els teniu declarats com char* no us calen els operadors &*
+    printf("En resum el meu fill Robb ha estat %s, en Ned %s i jo en Rickard amb pid = %d i m’han executat.\n", estat_net, estat_fill ,getpid());
 
 
     printf("The winter is coming!!!!!\n");
