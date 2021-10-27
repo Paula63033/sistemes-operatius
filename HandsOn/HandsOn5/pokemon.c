@@ -74,4 +74,46 @@ int main(int arc, char * arv[]) {
     if (write(1, s, strlen(s)) < 0) perror("Error writting the ending msg");
     exit(0);
 
+    //******************************************************************************
+    if (choice == 'E'){
+      pid = fork();
+      if(pid == 0){
+        printf("Wild pokemon appeared %d \n", getpid()); //pid del procés fill
+        fflush( stdout );
+        //amb un numero aleatori imprimir el pokemon de pokemon.csv i les seves dades
+        exec(pokemon);
+      }
+
+      while(){ //metres sigui veritat
+        int Flag = 1;
+
+        while (Flag == 1) {
+
+        char s[100];
+        char choice;
+        sprintf(s, "################\n# P. Throw Pokeball \n# B. Throw Berry\n################\n# R. Run\n################\n");
+        if (write(1, s, strlen(s)) < 0) perror("Error writting the menu");
+        scanf(" %c", & choice);
+
+        switch (choice) {
+        case 'P':
+          Flag = 0;
+          break;
+        case 'B':
+          break;
+        default:
+          sprintf(s, "%s!!!!Invalid option. Try again. %s\n", KRED, KNRM);
+          if (write(1, s, strlen(s)) < 0) perror("Error writting invalid option");
+        }
+      }
+       
+    }
+
+      printf("Wild pokemon appeared %d \n", getpid());
+          fflush( stdout );
+    
+          wait(NULL);
+      
+    }
+
 }
