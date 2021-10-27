@@ -4,15 +4,40 @@
 
 L'ordre yes envia una serie de 'y' a la sortida estandard, /dev/null es un dispositiu 'forat negre', tot el que es pasi 'desapareixerà', així 'yes>/dev/null' no mostrara res en la sortida estandard ja que tot es va a /dev/null
 
-yes > /dev/null està en estat R (running), en canvi si fem amb els passos anteriors amb el sleep fa diferents processos: primer la S(interruptible sleep), després la T( stopped by job control signal) i després la S (que conjuntament es com fer un running).
+yes > /dev/null està en estat R (running), en canvi si fem amb els passos anteriors amb el sleep fa té diferents estats: primer la S(interruptible sleep), després la T( stopped by job control signal) i després la S (que conjuntament es com fer un running).
+
+El procés sleep envia el procés directament al estat S que espera a que l'evant es completi en aquest cas passin els X segons.
 
 - **Modificar aquest procés per obtenir una sortida indicant Hola sóc el procés pare i Hola sóc el procés fill. (0,5 punts)**
 
 Hem creat el fitxer ``proces_test.c``
 
+Comentaris: Aquest exercici no és correcte. No teniu **fork()**.
+Solució:
+```c
+#include <sys/types.h>
+#include <unistd.h>
+#include <assert.h>
+#include <stdio.h>
+#include<stdlib.h>
+int main () {
+    pid_t p1 = fork();
+    assert (p1 >= 0);
+
+	if (p1 > 0){
+        	printf("Hola sóc el pare amb pid %d \n", getpid());
+	}
+	else if (p1 == 0){
+		printf("Hola sóc el fill amb pid %d \n", getpid());
+	}
+	exit(0);
+}
+```
+
 - **Modificar aquest exemple fent anar la funció execv(). (0,5 punts)**
 
 Hem creat el fitxer ``excev_test.c``
+
 
 - **Explica el funcionament del programa. Indicant quants senyals s'envien, quin procés envia el senyal, i on l'envia. (2,5 punts)**
 
@@ -32,10 +57,14 @@ finalment fa un parell de ``waitpid`` per suspendre la execució del procés. Es
 
 es llavors quan entra a la part final que ens diu ``Hola soc el pare acabem el programa`` i fa un ``exit(0)`` per tancar el programa
 
+Us falta comentar que el programa genera 5 senyals. Els canvis d'estat del fill generats per SIGCON i SIGSTOP generen la senyal SIGCHL que notifica el pare d'aquest esdeveniments en el fill i ens obliga a tenir que esperar per 2 senylas adicionals (es veu amb els 2 primers ```waits```). L'ordre ```exit()```també la genera i per tant necessitem un ultim ```wait()`` per esperar el SIGCHLD generat per l'exit.
+
 
 - **Programeu un programa pare, fill net que tingui la següent sortida (mantenint l’ordre). A més a més els fills, hauran de generar un enter aleatori entre els valors 0,1 i 2. El 0=apunyalat, 1=decapitat.  (4 punts)**
 
 Programa creat: ``pare_fill_net.c``
+
+Comentaris del exercici al Pull Request.
 
 - **Per acabar realitzeu el següent test al campus virtual relacionat amb els continguts treballats en aquest HandsOn. El seu valor és de 2 punts.**
 
