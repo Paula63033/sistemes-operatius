@@ -75,6 +75,7 @@ int main(int arc, char * arv[]) {
     exit(0);
 
     //******************************************************************************
+    
     if (choice == 'E'){
       pid = fork();
       if(pid == 0){
@@ -84,10 +85,10 @@ int main(int arc, char * arv[]) {
         exec(pokemon);
       }
 
-      while(){ //metres sigui veritat
-        int Flag = 1;
+      while(true){ //metres sigui veritat , crec que es el proces pare
+        //int Flag = 1;
 
-        while (Flag == 1) {
+        //while (Flag == 1) {
 
         char s[100];
         char choice;
@@ -97,22 +98,18 @@ int main(int arc, char * arv[]) {
 
         switch (choice) {
         case 'P':
-          Flag = 0;
           break;
-        case 'B':
+        case 'B': //optatiu
+          break;
+        case 'R':
           break;
         default:
           sprintf(s, "%s!!!!Invalid option. Try again. %s\n", KRED, KNRM);
           if (write(1, s, strlen(s)) < 0) perror("Error writting invalid option");
         }
-      }
+      //}
        
     }
-
-      printf("Wild pokemon appeared %d \n", getpid());
-          fflush( stdout );
-    
-          wait(NULL);
       
     }
 
