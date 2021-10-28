@@ -31,19 +31,28 @@ void tractament(){
     sprintf(log, "El valor de la variable es: %d \n", numero);
     logger(log);
 
-    if (numero==7)
+    if (numero==pokemonEscaped)
     {
             exit(pokemonEscaped);
     }
     
 }
 
+void tractament2(){
+
+    exit(0);
+    
+}
+
+
 
 int main()
 {
     srand(getpid());
 
-signal(SIGUSR1,tractament);
+    signal(SIGUSR1,tractament); //quan l'usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
+    signal(SIGUSR2,tractament2);
+    signal(SIGINT,SIG_IGN); //ignorem control+c
 
     while(1)
     {
