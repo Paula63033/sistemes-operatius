@@ -1,0 +1,8 @@
+Thu Nov  4 15:40:45 2021
+:El valor de la variable es: 1 
+ 
+Thu Nov  4 15:42:00 2021
+:El valor de la variable es: 4 
+ 
+Thu Nov  4 15:42:00 2021
+:cas apart 

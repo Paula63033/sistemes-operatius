@@ -9,6 +9,7 @@
 
 enum accions {pokemonEscaped = 7, pokemonCaptured = 2};
 
+
 void logger(char* missatge){
     time_t now;
     time(&now);
@@ -19,10 +20,15 @@ void logger(char* missatge){
 }
 
 int getRandom(){
-
     int num = rand()%10;
     return num;
 }
+
+int getPokemonRandom(){
+    int num = rand()%152;
+    return num;
+}
+
 
 void tractament(){
 
@@ -33,17 +39,26 @@ void tractament(){
 
     if (numero==pokemonEscaped)
     {
+            logger("escapat");
             exit(pokemonEscaped);
+    } 
+
+    if (numero==pokemonCaptured)
+    {
+            logger("capturat");
+            exit(pokemonCaptured);
+    }
+
+    else {
+
+        logger("cas apart");
+        kill(getpid(),"");
+        signal(SIGCHLD,"");
+        //EL FILL HA DE CONTINUAR I DESBLOUEJAR EL WAIT DEL PARE
     }
     
-}
-
-void tractament2(){
-
-    exit(0);
     
 }
-
 
 
 int main()
@@ -51,7 +66,6 @@ int main()
     srand(getpid());
 
     signal(SIGUSR1,tractament); //quan l'usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
-    signal(SIGUSR2,tractament2);
     signal(SIGINT,SIG_IGN); //ignorem control+c
 
     while(1)

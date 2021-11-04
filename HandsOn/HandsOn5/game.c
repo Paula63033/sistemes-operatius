@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <errno.h>
+#include "pokemon.h"
 //#include “pokemon.h”
 #include<stdbool.h>// Booleanos
 #define KNRM "\x1B[0m"
@@ -16,6 +17,84 @@
 #define KCYN "\x1B[36m"
 #define KWHT "\x1B[37m"
 char *args[] = {"pokemon", "pokemon", NULL};
+
+char*info;
+Pokemon pokemons[151];
+
+int mostrarPokemon(){
+int i = 0;
+char* buf = malloc(100);
+FILE* f = fopen("./pokedex.csv", "r");
+while (fgets(buf, 100, f) != NULL) {
+    if ((strlen(buf)>0) && (buf[strlen (buf) - 1] == '\n'))
+        buf[strlen (buf) - 1] = '\0';
+
+    //id pokemon
+    info = strtok(buf, ",");
+    int id = atoi(info);
+    printf("%d ", id);
+
+    //nom pokemon
+    info = strtok(NULL, ",");
+    char *name = info;
+    printf("%s ", name);
+
+    //tipus1 pokemon, tipus2 pokemon
+    info = strtok(NULL, ",");
+    char *tipus1 = info;
+    printf("%s ", tipus1);
+    info = strtok(NULL, ",");
+    char *tipus2 = info;
+    printf("%s ", tipus2);
+
+    //total, hp
+    info = strtok(NULL, ",");
+    int total = atof(info);
+    printf("%d \n" ,total);
+    info = strtok(NULL, ",");
+    int Hp = atof(info);
+    printf("%d ", Hp);
+
+    //attack, defense
+    info = strtok(buf, ",");
+    int attack = atoi(info);
+    printf("%d ", attack);
+    info = strtok(buf, ",");
+    int defense = atoi(info);
+    printf("%d ", defense);
+
+    //spAttack, spDefense, speed
+    info = strtok(buf, ",");
+    int spAttack = atoi(info);
+    printf("%d ", spAttack);
+    info = strtok(buf, ",");
+    int spDefense = atoi(info);
+    printf("%d ", spDefense);
+    info = strtok(buf, ",");
+    int speed = atoi(info);
+    printf("%d ", speed);
+
+    //gen, legendary
+    info = strtok(buf, ",");
+    int Gen = atoi(info);
+    printf("%d ", Gen);
+    info = strtok(buf, ",");
+    int legendary = atoi(info);
+    printf("%d ", legendary);
+
+    Pokemon p = new_pokemon(id, name, tipus1, tipus2, total, Hp, attack, defense, spAttack, spDefense, speed, Gen, legendary);
+    pokemons[i] = p;
+    i++;
+    
+
+}
+
+fclose(f);
+
+return EXIT_SUCCESS;
+
+}
+
 int main(int arc, char *arv[])
 {
 int endFlag=1;
@@ -35,7 +114,7 @@ while (endFlag == 1) {
     int i = 0;
     int num = fork();
     while (acabat == false) {
-        printf("%d %d\n",i,num);
+
          if (num > 0) {
                 //pare fa menu i fuill recobreix pokemon.c
             //tenir al pare q esperi al usuari q apreti tecles i el fill ha de anar executant bucle infinit.
@@ -45,7 +124,8 @@ while (endFlag == 1) {
                 printf("Aquesta és op: %c , %d\n", opcio, getpid());
                  switch (opcio) {
                     case 'P':
-                        printf("hola");
+                        kill(num,SIGUSR1);
+                        wait(NULL);
                     break;
                     case 'B':
                         printf("hola");
@@ -61,7 +141,7 @@ while (endFlag == 1) {
          }
          else if (num == 0) {
              //nomes el fill fa recobriment
-            //execv(“./pokemon”, args);
+            execv("./pokemon", args);
             //printf(“Faig el execv\n”);fflush(stdout);
             sleep(5);
             exit(0);
