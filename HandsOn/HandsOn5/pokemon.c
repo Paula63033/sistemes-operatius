@@ -1,116 +1,63 @@
-#include <stdio.h>
-
-#include <stdlib.h>
-
-#include <unistd.h>
-
-#include <string.h>
-
-#include <sys/wait.h>
-
 #include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
-#include <errno.h>
+#define RUNNINGDIR "./"
+#define LOGFILE RUNNINGDIR"log.txt"
 
-#include "pokemon.h"
+enum accions {pokemonEscaped = 7, pokemonCaptured = 2};
 
-#define KNRM "\x1B[0m"
-#define KRED "\x1B[31m"
-#define KGRN "\x1B[32m"
-#define KYEL "\x1B[33m"
-#define KBLU "\x1B[34m"
-#define KMAG "\x1B[35m"
-#define KCYN "\x1B[36m"
-#define KWHT "\x1B[37m"
+void logger(char* missatge){
+    time_t now;
+    time(&now);
+    FILE* f = fopen(LOGFILE, "a");
+    fprintf(f, "%s:%s \n" , ctime(&now), missatge); //printf a fitxer
+    //ctime(&now) ens dona temps actual
+    fclose(f); //tanquem fitxer
+}
 
-struct pokemon {
-int id;
-char name[32];
-char type[2][32];
-int total;
-int hp;
-int attack;
-int defense;
-int spAttack;
-int spDefense;
-int speed;
-int generation;
-int legendary;
-int seen;
-int captured;
-};
+int getRandom(){
 
-char * args[] = {
-  "pokemon",
-  "pokemon",
-  NULL
-};
+    int num = rand()%10;
+    return num;
+}
 
-int main(int arc, char * arv[]) {
-    int endFlag = 1;
+void tractament(){
 
-    while (endFlag == 1) {
+    char log[100];
+    int numero = getRandom();
+    sprintf(log, "El valor de la variable es: %d \n", numero);
+    logger(log);
 
-      char s[100];
-      char choice;
-      sprintf(s, "################\n# E. Explore \n# Q. Quit\n################\n");
-      if (write(1, s, strlen(s)) < 0) perror("Error writting the menu");
-      scanf(" %c", & choice);
-
-      switch (choice) {
-      case 'Q':
-        endFlag = 0;
-        break;
-      case 'E':
-        break;
-      default:
-        sprintf(s, "%s!!!!Invalid option. Try again. %s\n", KRED, KNRM);
-        if (write(1, s, strlen(s)) < 0) perror("Error writting invalid option");
-      }
+    if (numero==pokemonEscaped)
+    {
+            exit(pokemonEscaped);
     }
-
-    char s[100];
-    sprintf(s, "%s!!!!I'm tired from all the fun... %s\n", KMAG, KNRM);
-    if (write(1, s, strlen(s)) < 0) perror("Error writting the ending msg");
-    exit(0);
-
-    //******************************************************************************
     
-    if (choice == 'E'){
-      pid = fork();
-      if(pid == 0){
-        printf("Wild pokemon appeared %d \n", getpid()); //pid del procés fill
-        fflush( stdout );
-        //amb un numero aleatori imprimir el pokemon de pokemon.csv i les seves dades
-        exec(pokemon);
-      }
+}
 
-      while(true){ //metres sigui veritat , crec que es el proces pare
-        //int Flag = 1;
+void tractament2(){
 
-        //while (Flag == 1) {
+    exit(0);
+    
+}
 
-        char s[100];
-        char choice;
-        sprintf(s, "################\n# P. Throw Pokeball \n# B. Throw Berry\n################\n# R. Run\n################\n");
-        if (write(1, s, strlen(s)) < 0) perror("Error writting the menu");
-        scanf(" %c", & choice);
 
-        switch (choice) {
-        case 'P':
-          break;
-        case 'B': //optatiu
-          break;
-        case 'R':
-          break;
-        default:
-          sprintf(s, "%s!!!!Invalid option. Try again. %s\n", KRED, KNRM);
-          if (write(1, s, strlen(s)) < 0) perror("Error writting invalid option");
-        }
-      //}
-       
-    }
-      
+
+int main()
+{
+    srand(getpid());
+
+    signal(SIGUSR1,tractament); //quan l'usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
+    signal(SIGUSR2,tractament2);
+    signal(SIGINT,SIG_IGN); //ignorem control+c
+
+    while(1)
+    {
+
+
     }
 
 }
