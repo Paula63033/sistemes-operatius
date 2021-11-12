@@ -5,7 +5,7 @@
 #include <sys/wait.h>
 #include <signal.h>
 #include <errno.h>
-#include "pokemon.h"
+#include "pokedex/pokedex.h"
 //#include “pokemon.h”
 #include<stdbool.h>// Booleanos
 #define KNRM "\x1B[0m"
@@ -18,10 +18,10 @@
 #define KWHT "\x1B[37m"
 char *args[] = {"pokemon", "pokemon", NULL};
 
-char*info;
-Pokemon pokemons[151];
+//char*info;
+//Pokemon pokemons[151];
 
-int mostrarPokemon(){
+/*int mostrarPokemon(){
 int i = 0;
 char* buf = malloc(100);
 FILE* f = fopen("./pokedex.csv", "r");
@@ -94,11 +94,14 @@ fclose(f);
 return EXIT_SUCCESS;
 
 }
+*/
 
 int main(int arc, char *arv[])
 {
 int endFlag=1;
-bool acabat = false;
+int st;
+bool acabat;
+init_pokedex();
 while (endFlag == 1) {
     char s[100];
     char choice;
@@ -110,8 +113,8 @@ while (endFlag == 1) {
     endFlag=0;
     break;
     case 'E':
-    ;
-    int i = 0;
+    acabat = false;
+    show_pokemon(2);
     int num = fork();
     while (acabat == false) {
 
@@ -121,11 +124,10 @@ while (endFlag == 1) {
                 printf("Elegeix una opció. P: Throw Pokeball, B:Throw Berry, R:Run \n"); fflush(stdout);
                 char opcio;
                 scanf(" %c", &opcio);
-                printf("Aquesta és op: %c , %d\n", opcio, getpid());
+                //Sprintf("Aquesta és op: %c , %d\n", opcio, getpid());
                  switch (opcio) {
                     case 'P':
                         kill(num,SIGUSR1);
-                        wait(NULL);
                     break;
                     case 'B':
                         printf("hola");
@@ -135,19 +137,33 @@ while (endFlag == 1) {
                         //wait();
                         //posem endflag a 0, acaba volta
                         kill(num, SIGUSR2); //quan l’usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
-                        acabat = true;
                     break;
              }
+             waitpid(num, &st, WUNTRACED);
+
+             if( WEXITSTATUS(st) == 2){
+                printf("Atrapat\n");
+                acabat = true;
+
+             } else if (WEXITSTATUS(st) == 7){
+                 printf("Pokemon escapat\n");
+                acabat = true;
+
+             } else if (WEXITSTATUS(st) == 9){
+                printf(" Nosaltres escapem\n");
+                 acabat = true;
+             } else {
+                 printf("Torno a intentar\n");
+                 kill(num, SIGCONT);
+                 acabat = false;
+             }
+
          }
          else if (num == 0) {
              //nomes el fill fa recobriment
             execv("./pokemon", args);
-            //printf(“Faig el execv\n”);fflush(stdout);
-            sleep(5);
-            exit(0);
+            
          }
-         wait(NULL);
-         i++;
     }
     break;
     default:

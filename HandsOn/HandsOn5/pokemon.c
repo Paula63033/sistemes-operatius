@@ -29,6 +29,10 @@ int getPokemonRandom(){
     return num;
 }
 
+void tractament2(){
+    exit(9);
+}
+
 
 void tractament(){
 
@@ -52,8 +56,8 @@ void tractament(){
     else {
 
         logger("cas apart");
-        kill(getpid(),"");
-        signal(SIGCHLD,"");
+        kill(getpid(),SIGSTOP);
+        //Això es equivalent -Z raise(SIGSTOP); 
         //EL FILL HA DE CONTINUAR I DESBLOUEJAR EL WAIT DEL PARE
     }
     
@@ -66,6 +70,7 @@ int main()
     srand(getpid());
 
     signal(SIGUSR1,tractament); //quan l'usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
+    signal(SIGUSR2, tractament2);
     signal(SIGINT,SIG_IGN); //ignorem control+c
 
     while(1)

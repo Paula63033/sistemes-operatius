@@ -1,8 +1,30 @@
-Thu Nov  4 15:40:45 2021
-:El valor de la variable es: 1 
- 
-Thu Nov  4 15:42:00 2021
+Fri Nov 12 12:00:33 2021
 :El valor de la variable es: 4 
  
-Thu Nov  4 15:42:00 2021
+Fri Nov 12 12:00:33 2021
+:capturat 
+Fri Nov 12 12:01:39 2021
+:El valor de la variable es: 6 
+ 
+Fri Nov 12 12:01:39 2021
+:capturat 
+Fri Nov 12 12:01:44 2021
+:El valor de la variable es: 6 
+ 
+Fri Nov 12 12:01:44 2021
+:capturat 
+Fri Nov 12 12:02:08 2021
+:El valor de la variable es: 1 
+ 
+Fri Nov 12 12:02:08 2021
 :cas apart 
+Fri Nov 12 12:02:09 2021
+:El valor de la variable es: 5 
+ 
+Fri Nov 12 12:02:09 2021
+:cas apart 
+Fri Nov 12 12:02:11 2021
+:El valor de la variable es: 7 
+ 
+Fri Nov 12 12:02:11 2021
+:escapat 

@@ -1,19 +1,16 @@
-CC=gcc
-CFLAGS=-c
-SOURCES= game.c pokemon.c
-OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=pokemon_manage_service
+all: game pokemon
 
-all: $(SOURCES) $(EXECUTABLE)
-	
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(OBJECTS) -o $@
+pokedex/pokemon.o: pokedex/pokemon.c
+	gcc -c pokedex/pokemon.c -o pokedex/pokemon.o
 
-.c.o:
-	$(CC) $(CFLAGS) $< -o $@
+pokedex/pokedex.o: pokedex/pokedex.c 
+	gcc -c pokedex/pokedex.c -o pokedex/pokedex.o
 
-execute: $(EXECUTABLE)
-	 ./$(EXECUTABLE)
+game: game.c pokedex/pokedex.o pokedex/pokemon.o
+	gcc pokedex/pokemon.o pokedex/pokedex.o game.c -o game
+
+pokemon: pokemon.c 
+	gcc pokemon.c -o pokemon
 
 clean:
 	/bin/rm -rf *.o
