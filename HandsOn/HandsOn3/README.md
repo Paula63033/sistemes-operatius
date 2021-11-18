@@ -9,7 +9,7 @@ TIP: Taula ASCII**
 
 
 
-* **Act 02: Hack el kernel per imprimir aquest missatge cada cop que un usuari obra un fitxer: “ :) Your file filename.txt is being opened!!!” **
+* **Act 02: Hack el kernel per imprimir aquest missatge cada cop que un usuari obra un fitxer: " :) Your file filename.txt is being opened!!!"**
 
 
 
