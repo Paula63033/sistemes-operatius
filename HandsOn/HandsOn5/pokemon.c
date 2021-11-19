@@ -1,77 +1,82 @@
-#include <stdio.h>
-
-#include <stdlib.h>
-
-#include <unistd.h>
-
-#include <string.h>
-
-#include <sys/wait.h>
-
 #include <signal.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
-#include <errno.h>
+#define RUNNINGDIR "./"
+#define LOGFILE RUNNINGDIR"log.txt"
 
-#include "pokemon.h"
+enum accions {pokemonEscaped = 7, pokemonCaptured = 2};
 
-#define KNRM "\x1B[0m"
-#define KRED "\x1B[31m"
-#define KGRN "\x1B[32m"
-#define KYEL "\x1B[33m"
-#define KBLU "\x1B[34m"
-#define KMAG "\x1B[35m"
-#define KCYN "\x1B[36m"
-#define KWHT "\x1B[37m"
 
-struct pokemon {
-int id;
-char name[32];
-char type[2][32];
-int total;
-int hp;
-int attack;
-int defense;
-int spAttack;
-int spDefense;
-int speed;
-int generation;
-int legendary;
-int seen;
-int captured;
-};
+void logger(char* missatge){
+    time_t now;
+    time(&now);
+    FILE* f = fopen(LOGFILE, "a");
+    fprintf(f, "%s:%s \n" , ctime(&now), missatge); //printf a fitxer
+    //ctime(&now) ens dona temps actual
+    fclose(f); //tanquem fitxer
+}
 
-char * args[] = {
-  "pokemon",
-  "pokemon",
-  NULL
-};
+int getRandom(){
+    int num = rand()%10;
+    return num;
+}
 
-int main(int arc, char * arv[]) {
-    int endFlag = 1;
+int getPokemonRandom(){
+    int num = rand()%152;
+    return num;
+}
 
-    while (endFlag == 1) {
+void tractament2(){
+    exit(9);
+}
 
-      char s[100];
-      char choice;
-      sprintf(s, "################\n# E. Explore \n# Q. Quit\n################\n");
-      if (write(1, s, strlen(s)) < 0) perror("Error writting the menu");
-      scanf(" %c", & choice);
 
-      switch (choice) {
-      case 'Q':
-        endFlag = 0;
-        break;
-      case 'E':
-        break;
-      default:
-        sprintf(s, "%s!!!!Invalid option. Try again. %s\n", KRED, KNRM);
-        if (write(1, s, strlen(s)) < 0) perror("Error writting invalid option");
-      }
+void tractament(){
+
+    char log[100];
+    int numero = getRandom();
+    sprintf(log, "El valor de la variable es: %d \n", numero);
+    logger(log);
+
+    if (numero==pokemonEscaped)
+    {
+            logger("escapat");
+            exit(pokemonEscaped);
+    } 
+
+    if (numero==pokemonCaptured)
+    {
+            logger("capturat");
+            exit(pokemonCaptured);
     }
 
-    char s[100];
-    sprintf(s, "%s!!!!I'm tired from all the fun... %s\n", KMAG, KNRM);
-    if (write(1, s, strlen(s)) < 0) perror("Error writting the ending msg");
-    exit(0);
+    else {
+
+        logger("cas apart");
+        kill(getpid(),SIGSTOP);
+        //Això es equivalent -Z raise(SIGSTOP); 
+        //EL FILL HA DE CONTINUAR I DESBLOUEJAR EL WAIT DEL PARE
+    }
+    
+    
+}
+
+
+int main()
+{
+    srand(getpid());
+
+    signal(SIGUSR1,tractament); //quan l'usuari ens passa SIGUSR1 al proces del programa atacara al metode tractament
+    signal(SIGUSR2, tractament2);
+    signal(SIGINT,SIG_IGN); //ignorem control+c
+
+    while(1)
+    {
+
+
+    }
 
 }
