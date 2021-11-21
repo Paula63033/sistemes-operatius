@@ -12,7 +12,8 @@ on my_tty és tty on volem escriure, "\015\012" és un punter a una cadena i 2 �
 
 * **Act 01: Analitzeu la següent situació i comenteu amb detall que succeeix al sistema i quins perills pot comportar per l'usuari.**
 Fixers adjunts de l'activitat:
--act1.c
+
+- act1.c
 
 * **Act 02: Hack el kernel per imprimir aquest missatge cada cop que un usuari obra un fitxer: " :) Your file filename.txt is being opened!!!"**
 Fitxers adjunts de l'activitat:
