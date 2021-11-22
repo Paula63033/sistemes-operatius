@@ -18,7 +18,7 @@ El primer argument del mètode és el nom de la trucada al sistema. El segon i t
 
 KERN_INFO és una macro. Es defineix a tools /include/linux/kern_levels.h al codi font de linux4.15-25
 
-Entenem que la següent crida al sistema que ens donara informació sobre el kernel de la maquina, i aixo pot ser perillos de cara a que l'usuari conegui aquesta informació.
+Entenem que la següent crida al sistema que ens donara informació sobre el kernel de la maquina, i aixo pot ser perillos de cara a que l'usuari conegui aquesta informació. En concret l'usuari que executi aquest codi podrà accedir a posicions de memoria de altres usuaris.
 
 * **Act 02: Hack el kernel per imprimir aquest missatge cada cop que un usuari obra un fitxer: " :) Your file filename.txt is being opened!!!"**
 
