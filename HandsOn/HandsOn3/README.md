@@ -12,13 +12,17 @@ on my_tty és tty on volem escriure, "\015\012" és un punter a una cadena i 2 �
 
 * **Act 01: Analitzeu la següent situació i comenteu amb detall que succeeix al sistema i quins perills pot comportar per l'usuari.**
 
-printk sempre va acompanyat de KERN_INFO. Son missatges s'imprimeixen a la memòria intermèdia de registre del nucli, que és un memòria intermèdia d'anell exportat a l'espai d'usuari a través de /dev/kmsg.
+printk sempre va acompanyat de KERN_INFO. Son missatges que s'imprimeixen a la memòria intermèdia de registre del nucli, que és un memòria intermèdia d'anell exportat a l'espai d'usuari a través de /dev/kmsg.
 
 El primer argument del mètode és el nom de la trucada al sistema. El segon i tercer argument macro descriuen el tipus i el nom del primer argument de la trucada al sistema.
 
 KERN_INFO és una macro. Es defineix a tools /include/linux/kern_levels.h al codi font de linux4.15-25
 
+<<<<<<< HEAD
 Entenem que la següent crida al sistema que ens donara informació sobre el kernel de la maquina, i aixo pot ser perillos de cara a que l'usuari conegui aquesta informació. En concret l'usuari que executi aquest codi podrà accedir a posicions de memoria de altres usuaris.
+=======
+Entenem que la següent crida al sistema que ens donara informació sobre el kernel de la maquina, i aixo pot ser perillos de cara a que un altre usuari conegui aquesta informació.
+>>>>>>> a7c9f117944c7e9d26c89ca0d28013f1766c699e
 
 * **Act 02: Hack el kernel per imprimir aquest missatge cada cop que un usuari obra un fitxer: " :) Your file filename.txt is being opened!!!"**
 
