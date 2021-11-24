@@ -7,3 +7,9 @@ l'arxiu que el fork s'executa primer, sobreescriu al fitxer out.txt el text "so"
 * **Modifiqueu el codi anterior per tenir una comunicació bidireccional seguint els passos anteriors.**
 
 Fitxer adjunt: act2.c
+
+*  **On van les dades després de l’escriptura a una pipe, però abans de la lectura del pipe?**
+
+
+
+* **Es comparteix l’espai d'adreces entre dos processos Pare-Fill que comparteixen un pipe?**
