@@ -13,3 +13,5 @@ Fitxer adjunt: act2.c
 
 
 * **Es comparteix l’espai d'adreces entre dos processos Pare-Fill que comparteixen un pipe?**
+
+No
