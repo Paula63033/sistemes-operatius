@@ -15,3 +15,18 @@ Tota l'estructura de la pipe es mou pel kernel; totes les dades que viatgen per 
 * **Es comparteix l’espai d'adreces entre dos processos Pare-Fill que comparteixen un pipe?**
 
 No
+
+* **Explica que fa el codi següent i raona l'efecte de comentar i descomentar la línia marcada amb //(X)**
+
+Si tenim el close comentat, el programa ens mostra la següent sortida:
+
+"I got a message! It was msg1"
+"I got a message! It was msg2"
+
+i es queda en stand-by, ja que no tanquem en cap moment.
+
+Mentres que si descomentem el close, sí que es tanca la tuberia, de menera que ens mostra una línea més a la sortida i acaba el programa.
+
+"I got a message! It was msg1"
+"I got a message! It was msg2"
+"No more messages :("
