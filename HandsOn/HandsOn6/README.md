@@ -32,3 +32,7 @@ Mentres que si descomentem el close, sí que es tanca la tuberia, de menera que 
 "No more messages :("
 
 Si esta comentat el close el pipe es queda obert i es fa un bucle infinit. Si no esta comentat, es tanca la tuberia i surt del bucle, de manera que acaba el programa fent l'ultim printf.
+
+* **Completeu aquest codi amb c per aconseguir replicar la comanda (ls | wc -l).**
+
+Fitxer adjunt: act4.c
