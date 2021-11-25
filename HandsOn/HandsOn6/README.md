@@ -10,7 +10,7 @@ Fitxer adjunt: act2.c
 
 *  **On van les dades després de l’escriptura a una pipe, però abans de la lectura del pipe?**
 
-
+Tota l'estructura de la pipe es mou pel kernel; totes les dades que viatgen per la canonada es mouen pel kernel. Les dades no viatjen per les dades de l'usuari.
 
 * **Es comparteix l’espai d'adreces entre dos processos Pare-Fill que comparteixen un pipe?**
 
