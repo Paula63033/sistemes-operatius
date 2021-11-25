@@ -49,6 +49,8 @@ int main(int argc, char *argv[]){
                     
                 }                
             }
+
+               close(fd[1]);
                wait(NULL);
                wait(NULL);
 }
