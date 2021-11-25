@@ -23,10 +23,12 @@ Si tenim el close comentat, el programa ens mostra la següent sortida:
 "I got a message! It was msg1"
 "I got a message! It was msg2"
 
-i es queda en stand-by, ja que no tanquem en cap moment.
+i es queda en stand-by, ja que no tanquem el pipe en cap moment.
 
 Mentres que si descomentem el close, sí que es tanca la tuberia, de menera que ens mostra una línea més a la sortida i acaba el programa.
 
 "I got a message! It was msg1"
 "I got a message! It was msg2"
 "No more messages :("
+
+Si esta comentat el close el pipe es queda obert i es fa un bucle infinit. Si no esta comentat, es tanca la tuberia i surt del bucle, de manera que acaba el programa fent l'ultim printf.
