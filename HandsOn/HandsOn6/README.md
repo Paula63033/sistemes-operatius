@@ -36,3 +36,7 @@ Si esta comentat el close el pipe es queda obert i es fa un bucle infinit. Si no
 * **Completeu aquest codi amb c per aconseguir replicar la comanda (ls | wc -l).**
 
 Fitxer adjunt: act4.c
+
+* **Modifiqueu el codi anterior per tenir dos processos fills, un farà el ls i l'altre el wc -l. El pare esperarà que els dos fills acabin per acabar**
+
+Fitxer adjunt: act5.c
