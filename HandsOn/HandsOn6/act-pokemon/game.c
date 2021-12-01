@@ -36,28 +36,10 @@ while (endFlag == 1) {
     scanf(" %c", &choice);
     switch (choice) {
     case 'Q':
-        /*FILE* f = fopen(LOGFILE, "w");
-        fprintf(f, "%d %s %d %d \n", ); printf a fitxer*/
-        /*
-            id, name, height, weight
-        */
 
-       
-            FILE *pf,*qf;
-            char c;
 
-            pf=fopen("/pokedex/pokedex.csv","r");
-            qf=fopen("pokedex_timestamp.csv","w");
-
-            fscanf(pf,"%c",&c);
-            while(c!=EOF)
-            {
-                fprintf(qf,"%c",c);
-                fscanf(pf,"%c",&c);
-            }
-            
-            fclose(pf);
-            fclose(qf);
+       save();
+         
         endFlag=0;
     break;
     case 'E':

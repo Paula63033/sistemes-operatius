@@ -4,7 +4,7 @@
 #include "pokedex.h"
 #include "pokemon.h"
 #include <string.h>
-#define MAX_POKEMON 10
+#define MAX_POKEMON 3
 
 Pokemon pokemons[MAX_POKEMON];
 
@@ -41,6 +41,21 @@ while (fgets(buf, 100, f) != NULL) {
 fclose(f);
 
 return EXIT_SUCCESS;
+}
+
+void save(){
+
+    FILE *qf;
+    qf=fopen("pokedex_timestamp.csv","w");
+
+    for(int i = 0;  i < MAX_POKEMON; i++){
+        Pokemon p = pokemons[i];
+        show_pokemon(i);
+        fprintf(qf,"%d,%s,%lf,%lf \n", pokemon_id(p), pokemon_name(p),pokemon_height(p),pokemon_weight(p));            
+    }
+
+      fclose(qf);
+
 }
 
  
