@@ -40,3 +40,7 @@ Fitxer adjunt: act4.c
 * **Modifiqueu el codi anterior per tenir dos processos fills, un farà el ls i l'altre el wc -l. El pare esperarà que els dos fills acabin per acabar**
 
 Fitxer adjunt: act5.c
+
+* **Milloreu el codi presentat, eliminar repeticions, simplificant la lògica, millorant el Makefile... Com a mínim heu de fer una aportació.**
+
+Fitxer ac6.c
