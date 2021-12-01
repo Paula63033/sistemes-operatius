@@ -50,3 +50,7 @@ jugador.c
 Makefile
 
 Hem millorat el fitxer Makefile unificant en una sola etiqueta els arxius .c i .o corresponents
+
+* **Millorant la pokédex a partir de l'aventura**
+
+* **Simulant combats Pokémon**
