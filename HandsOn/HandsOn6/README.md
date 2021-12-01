@@ -53,4 +53,6 @@ Hem millorat el fitxer Makefile unificant en una sola etiqueta els arxius .c i .
 
 * **Millorant la pokédex a partir de l'aventura**
 
+fitxers /act-pokemon/*
+
 * **Simulant combats Pokémon**

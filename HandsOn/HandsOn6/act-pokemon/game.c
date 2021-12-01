@@ -16,88 +16,14 @@
 #define KMAG "\x1B[35m"
 #define KCYN "\x1B[36m"
 #define KWHT "\x1B[37m"
+#define LOGFILE "pokedex_timestamp.csv"
+
 char *args[] = {"pokemon", "pokemon", NULL};
-
-//char*info;
-//Pokemon pokemons[151];
-
-/*int mostrarPokemon(){
-int i = 0;
-char* buf = malloc(100);
-FILE* f = fopen("./pokedex.csv", "r");
-while (fgets(buf, 100, f) != NULL) {
-    if ((strlen(buf)>0) && (buf[strlen (buf) - 1] == '\n'))
-        buf[strlen (buf) - 1] = '\0';
-
-    //id pokemon
-    info = strtok(buf, ",");
-    int id = atoi(info);
-    printf("%d ", id);
-
-    //nom pokemon
-    info = strtok(NULL, ",");
-    char *name = info;
-    printf("%s ", name);
-
-    //tipus1 pokemon, tipus2 pokemon
-    info = strtok(NULL, ",");
-    char *tipus1 = info;
-    printf("%s ", tipus1);
-    info = strtok(NULL, ",");
-    char *tipus2 = info;
-    printf("%s ", tipus2);
-
-    //total, hp
-    info = strtok(NULL, ",");
-    int total = atof(info);
-    printf("%d \n" ,total);
-    info = strtok(NULL, ",");
-    int Hp = atof(info);
-    printf("%d ", Hp);
-
-    //attack, defense
-    info = strtok(buf, ",");
-    int attack = atoi(info);
-    printf("%d ", attack);
-    info = strtok(buf, ",");
-    int defense = atoi(info);
-    printf("%d ", defense);
-
-    //spAttack, spDefense, speed
-    info = strtok(buf, ",");
-    int spAttack = atoi(info);
-    printf("%d ", spAttack);
-    info = strtok(buf, ",");
-    int spDefense = atoi(info);
-    printf("%d ", spDefense);
-    info = strtok(buf, ",");
-    int speed = atoi(info);
-    printf("%d ", speed);
-
-    //gen, legendary
-    info = strtok(buf, ",");
-    int Gen = atoi(info);
-    printf("%d ", Gen);
-    info = strtok(buf, ",");
-    int legendary = atoi(info);
-    printf("%d ", legendary);
-
-    Pokemon p = new_pokemon(id, name, tipus1, tipus2, total, Hp, attack, defense, spAttack, spDefense, speed, Gen, legendary);
-    pokemons[i] = p;
-    i++;
-    
-
-}
-
-fclose(f);
-
-return EXIT_SUCCESS;
-
-}
-*/
 
 int main(int arc, char *arv[])
 {
+int seen = 0;
+int captured = 0;
 int endFlag=1;
 int st;
 bool acabat;
@@ -110,12 +36,35 @@ while (endFlag == 1) {
     scanf(" %c", &choice);
     switch (choice) {
     case 'Q':
-    endFlag=0;
+        /*FILE* f = fopen(LOGFILE, "w");
+        fprintf(f, "%d %s %d %d \n", ); printf a fitxer*/
+        /*
+            id, name, height, weight
+        */
+
+       
+            FILE *pf,*qf;
+            char c;
+
+            pf=fopen("/pokedex/pokedex.csv","r");
+            qf=fopen("pokedex_timestamp.csv","w");
+
+            fscanf(pf,"%c",&c);
+            while(c!=EOF)
+            {
+                fprintf(qf,"%c",c);
+                fscanf(pf,"%c",&c);
+            }
+            
+            fclose(pf);
+            fclose(qf);
+        endFlag=0;
     break;
     case 'E':
-    acabat = false;
-    show_pokemon(2);
-    int num = fork();
+        acabat = false;
+        show_pokemon(2);
+        seen = seen+1;
+        int num = fork();
     while (acabat == false) {
 
          if (num > 0) {
@@ -143,6 +92,7 @@ while (endFlag == 1) {
 
              if( WEXITSTATUS(st) == 2){
                 printf("Atrapat\n");
+                captured = captured +1;
                 acabat = true;
 
              } else if (WEXITSTATUS(st) == 7){
