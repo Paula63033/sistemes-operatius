@@ -43,4 +43,10 @@ Fitxer adjunt: act5.c
 
 * **Milloreu el codi presentat, eliminar repeticions, simplificant la lògica, millorant el Makefile... Com a mínim heu de fer una aportació.**
 
-Fitxer ac6.c
+Fitxers:
+
+sala.c
+jugador.c
+Makefile
+
+Hem millorat el fitxer Makefile unificant en una sola etiqueta els arxius .c i .o corresponents
