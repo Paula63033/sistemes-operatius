@@ -51,8 +51,14 @@ Makefile
 
 Hem millorat el fitxer Makefile unificant en una sola etiqueta els arxius .c i .o corresponents
 
-* **Millorant la pokédex a partir de l'aventura**
+* **Millorant la pokédex a partir de l'aventura. FET** 
 
 fitxers /act-pokemon/*
 
-* **Simulant combats Pokémon**
+* **Simulant combats Pokémon. NO FET DEL TOT**
+
+fitxers /act-pokemon/
+
+**Generar un nombre enter aleatori entre 1 i 151**: FET. Metode ``int getPokemonRandom(){`` de la classe ``pokemon.c``
+**Inicialitzar la seva vida amb el valor de pokemon_hp.**: 
+
