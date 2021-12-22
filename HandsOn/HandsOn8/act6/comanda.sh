@@ -1,1 +1,0 @@
-cat series.db  | awk 'BEGIN{FS=":"}{print $1}' | sort | uniq
