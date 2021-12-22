@@ -1,0 +1,18 @@
+{ 
+ "pokedex":[
+  {
+   "#":1,
+   "Name":"Bulbasaur",
+   "Type A":"Grass",
+   "Type B":"Poison",
+   "Total":318
+  },
+  {
+   "#":2,
+   "Name":"Ivysaur",
+   "Type A":"Grass",
+   "Type B":"Poison",
+   "Total":405
+  }
+]
+}

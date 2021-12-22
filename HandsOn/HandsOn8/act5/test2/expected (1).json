@@ -1,0 +1,34 @@
+{ 
+ "pokedex":[
+  {
+   "#":1,
+   "Name":"Bulbasaur",
+   "Type 1":"Grass",
+   "Type 2":"Poison",
+   "Total":318,
+   "HP":45,
+   "Attack":49,
+   "Defense":49,
+   "Sp. Atk":65,
+   "Sp. Def":65,
+   "Speed":45,
+   "Generation":1,
+   "Legendary":0
+  },
+  {
+   "#":2,
+   "Name":"Ivysaur",
+   "Type 1":"Grass",
+   "Type 2":"Poison",
+   "Total":405,
+   "HP":60,
+   "Attack":62,
+   "Defense":63,
+   "Sp. Atk":80,
+   "Sp. Def":80,
+   "Speed":60,
+   "Generation":1,
+   "Legendary":0
+  }
+]
+}
