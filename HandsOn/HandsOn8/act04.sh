@@ -5,4 +5,4 @@ awk -F, ' \
 END {\ 
 }' pokedex.csv
 #printf("%s%s",$i,(i==NF)?"\n":OFS)
-#primer parametre es format, 2n les variables q vols imprimir, igual que C
+#primer parametre es format, 2n les variables q vols imprimir, 3r (es un if). funciona igual que C
